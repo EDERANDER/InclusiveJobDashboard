@@ -50,19 +50,32 @@ if menu == "🏠 Bienvenido":
         """
     )
 
+    # st.subheader("Equipo de Desarrollo")
+    # col1, col2, col3 = st.columns(3)
+    # with col1:
+    #     st.image("https://randomuser.me/api/portraits/men/1.jpg", width=100)  
+    #     st.write("**Ángel**\nRol: Data Scientist")
+    # with col2:
+    #     st.image("https://randomuser.me/api/portraits/men/2.jpg", width=100)
+    #     st.write("**Beckham**\nRol: Desarrollador Full Stack")
+    # with col3:
+    #     st.image("https://randomuser.me/api/portraits/men/3.jpg", width=100)
+    #     st.write("**Ander**\nRol: Analista de Datos")
+
     st.subheader("Equipo de Desarrollo")
     col1, col2, col3 = st.columns(3)
+
     with col1:
-        st.image("https://randomuser.me/api/portraits/men/1.jpg", width=100)  
-        st.write("**Ángel**\nRol: Data Scientist")
+        st.image("img/dev_equipo.png", width=100)  
+        st.write("**Ángel** 👨‍💻")
+
     with col2:
-        st.image("https://randomuser.me/api/portraits/men/2.jpg", width=100)
-        st.write("**Beckham**\nRol: Desarrollador Full Stack")
+        st.image("img/dev_equipo.png", width=100)
+        st.write("**Beckham** 👨‍💻")
+
     with col3:
-        st.image("https://randomuser.me/api/portraits/men/3.jpg", width=100)
-        st.write("**Ander**\nRol: Analista de Datos")
-
-
+        st.image("img/dev_equipo.png", width=100)
+        st.write("**Ander** 📊")
 
 
 
@@ -72,7 +85,30 @@ if menu == "🏠 Bienvenido":
 elif menu == "📊 Análisis de Datos":
     st.title("📊 Análisis de Datos: Estadísticas Básicas 📈")
 
-    st.subheader("1. Distribución de Vacantes por Sector")
+    
+    # Distribución de Vacantes para Personas con Discapacidad
+    st.subheader("1. Distribución de Vacantes para Personas con Discapacidad")
+    st.write("**Descripción**: Muestra la proporción de vacantes exclusivas para personas con discapacidad en comparación con las que no lo son. La gran mayoría de las vacantes no están destinadas específicamente a este grupo.")
+
+    fig_pie = px.pie(df, names='ESPCD', title="Distribución de Vacantes para Personas con Discapacidad",
+                    color_discrete_sequence=px.colors.sequential.Blues)
+    st.plotly_chart(fig_pie)
+
+    # Comparación de Vacantes Exclusivas para Personas con Discapacidad
+    st.subheader("2. Comparación de Vacantes Exclusivas para Personas con Discapacidad")
+    st.write("**Descripción**: Este gráfico compara el número de vacantes exclusivas para personas con discapacidad (PCD) frente a las que no lo son. La diferencia en altura de las barras revela la cantidad limitada de vacantes específicamente diseñadas para personas con discapacidad en relación con las vacantes generales.")
+
+    vacantes_counts = df['ESPCD'].value_counts().reset_index()
+    vacantes_counts.columns = ['Vacantes para PCD', 'Número de Vacantes']
+    fig_bar = px.bar(vacantes_counts, x='Vacantes para PCD', y='Número de Vacantes',
+                    title="Comparación de Vacantes Exclusivas para Personas con Discapacidad",
+                    color='Número de Vacantes', color_continuous_scale=px.colors.sequential.Pinkyl)
+    st.plotly_chart(fig_bar)
+    
+    # Distribución de Vacantes por Sector
+    st.subheader("3. Distribución de Vacantes por Sector")
+    st.write("**Descripción**: Este gráfico muestra los sectores económicos con mayor cantidad de vacantes. Los sectores están organizados de mayor a menor según el número de vacantes, permitiendo identificar rápidamente en qué áreas hay más oportunidades laborales.")
+
     sector_counts = df['SECTOR'].value_counts().reset_index()
     sector_counts.columns = ['Sector', 'Number of Vacancies']
     fig1 = px.bar(
@@ -85,9 +121,12 @@ elif menu == "📊 Análisis de Datos":
         title="Vacantes por Sector"
     )
     st.plotly_chart(fig1)
-    st.write("**Interpretación**: Esta visualización muestra los sectores con más vacantes inclusivas, permitiendo identificar cuáles áreas son más accesibles.")
 
-    st.subheader("2. Distribución de Vacantes por Provincia")
+
+    # Distribución de Vacantes por Provincia
+    st.subheader("4. Distribución de Vacantes por Provincia")
+    st.write("**Descripción**: Este gráfico ilustra el número de vacantes disponibles en distintas provincias. Lima destaca significativamente sobre las demás, indicando una concentración de oportunidades laborales en la capital.")
+
     provincia_counts = df['PROVINCIA'].value_counts().reset_index()
     provincia_counts.columns = ['Provincia', 'Number of Vacancies']
     fig2 = px.bar(
@@ -100,9 +139,9 @@ elif menu == "📊 Análisis de Datos":
         title="Vacantes por Provincia"
     )
     st.plotly_chart(fig2)
-    st.write("**Interpretación**: Nos ayuda a comprender si existen oportunidades de empleo inclusivo en todas las provincias o si están concentradas en ciertas regiones.")
 
-    st.subheader("3. Requisitos de Experiencia en Vacantes")
+    st.subheader("5. Requisitos de Experiencia en Vacantes")
+    st.write("**Descripción**: Representa la proporción de vacantes que exigen experiencia previa. Más de la mitad de las vacantes requieren experiencia, lo cual podría ser una barrera para personas con discapacidad en búsqueda de empleo ")
     experience_counts = df['SINEXPERIENCIA'].value_counts().reset_index()
     experience_counts.columns = ['Experiencia', 'Número de Vacantes']
     fig3 = px.pie(
@@ -113,9 +152,9 @@ elif menu == "📊 Análisis de Datos":
         color_discrete_sequence=px.colors.sequential.RdBu
     )
     st.plotly_chart(fig3)
-    st.write("**Interpretación**: Indica qué proporción de las vacantes requieren experiencia previa, un factor que puede limitar el acceso para algunos candidatos.")
 
-    st.subheader("4. Experiencia Promedio por Sector")
+    st.subheader("6. Experiencia Promedio por Sector")
+    st.write("**Descripción**: Este gráfico muestra la cantidad promedio de meses de experiencia requerida en cada sector. Los sectores con barras más largas requieren más experiencia, mientras que otros presentan menores exigencias, lo cual puede ser más accesible para candidatos con menor experiencia. ")
     avg_experience = df.groupby('SECTOR')['EXPERIENCIA_MESES'].mean().reset_index()
     avg_experience.columns = ['Sector', 'Experiencia Promedio (meses)']
     fig4 = px.bar(
@@ -127,26 +166,6 @@ elif menu == "📊 Análisis de Datos":
         title="Experiencia Promedio Requerida por Sector"
     )
     st.plotly_chart(fig4)
-    st.write("**Interpretación**: Identifica sectores que imponen mayores barreras de experiencia, proporcionando información valiosa para ajustar las políticas inclusivas.")
-
-
-    # Distribución de Vacantes para Personas con Discapacidad
-    st.subheader("1. Distribución de Vacantes para Personas con Discapacidad")
-    fig_pie = px.pie(df, names='ESPCD', title="Distribución de Vacantes para Personas con Discapacidad",
-                     color_discrete_sequence=px.colors.sequential.Blues)
-    st.plotly_chart(fig_pie)
-
-    # Comparación de Vacantes Exclusivas para Personas con Discapacidad
-    st.subheader("2. Comparación de Vacantes Exclusivas para Personas con Discapacidad")
-    vacantes_counts = df['ESPCD'].value_counts().reset_index()
-    vacantes_counts.columns = ['Vacantes para PCD', 'Número de Vacantes']
-    fig_bar = px.bar(vacantes_counts, x='Vacantes para PCD', y='Número de Vacantes',
-                     title="Comparación de Vacantes Exclusivas para Personas con Discapacidad",
-                     color='Número de Vacantes', color_continuous_scale=px.colors.sequential.Pinkyl)
-    st.plotly_chart(fig_bar)
-
-
-
 
 # --- SECCIÓN 3: Predicciones ML ---
 elif menu == "🤖 Predicciones ML":
