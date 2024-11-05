@@ -32,7 +32,7 @@ Luego abre tu navegador y visita http://localhost:8501 para ver la aplicación e
 ## 👥 Equipo de desarrollo
 
 - [Angel Garcia](https://github.com/AngelgarciaJ) 💼
-- [Desarrollador 2](https://github.com/G) 💻
+- [Eder Ander](https://github.com/EDERANDER) 💻
 - [Desarrollador 3](https://github.com/GitHubUser) 📊
 
 ## 🤝 Contribuciones
