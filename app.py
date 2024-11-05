@@ -11,7 +11,39 @@ from sklearn.preprocessing import LabelEncoder
 from sklearn.metrics import classification_report, confusion_matrix
 
 # Configuración de la página de Streamlit
+# Configuración de la página
 st.set_page_config(page_title="Inclusión Laboral Dashboard", layout="wide", page_icon="🌐")
+
+# CSS para la animación
+st.markdown("""
+<style>
+    @keyframes titleAnimation {
+        0% { transform: translateX(-100%); opacity: 0; }
+        50% { transform: translateX(0); opacity: 1; }
+        100% { transform: translateX(0); opacity: 1; }
+    }
+
+    @keyframes rainbow {
+        0% { color: #ff0000; }
+        20% { color: #ffa500; }
+        40% { color: #ffff00; }
+        60% { color: #008000; }
+        80% { color: #0000ff; }
+        100% { color: #ff0000; }
+    }
+
+    .animated-title {
+        font-size: 3em;
+        font-weight: bold;
+        text-align: center;
+        animation: titleAnimation 2s ease-out, rainbow 5s infinite;
+        padding: 20px;
+    }
+</style>
+""", unsafe_allow_html=True)
+
+# Título animado
+st.markdown('<h1 class="animated-title">🌐 Dashboard de Inclusión Laboral 🌐</h1>', unsafe_allow_html=True)
 
 # Cargar los datos automáticamente con st.cache_data
 @st.cache_data
