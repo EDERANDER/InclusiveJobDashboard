@@ -1,13 +1,11 @@
 # InclusiveJobDashboard 📊
 
-InclusiveJobDashboard es una plataforma diseñada para analizar datos de empleabilidad e inclusión laboral en Perú, con un enfoque en personas con discapacidad. Utiliza datos del Ministerio de Trabajo y Promoción del Empleo (MTPE) para realizar análisis de correspondencias, aplicar Machine Learning en predicciones de empleabilidad, segmentación de vacantes, y modelos de recomendación personalizados.
+**InclusiveJobDashboard** es una plataforma de análisis de datos que evalúa la empleabilidad e inclusión laboral en Perú, enfocada en personas con discapacidad. A partir de datos proporcionados por el Ministerio de Trabajo y Promoción del Empleo (MTPE), la plataforma ofrece análisis descriptivos visuales y una evaluación básica de inclusividad utilizando Machine Learning.
 
 ## 🚀 Características
 
-- Análisis de correspondencias para identificar patrones en datos de empleabilidad.
-- Modelos de predicción de empleabilidad basados en Machine Learning.
-- Segmentación de vacantes para una mejor experiencia de usuario.
-- Modelos de recomendación personalizados que promueven la inclusión laboral.
+- **Análisis visual descriptivo**: Representación gráfica de datos para identificar tendencias en vacantes, sectores económicos, y requisitos de experiencia, facilitando una comprensión rápida y clara de las oportunidades de empleo inclusivo.
+- **Evaluación de inclusividad mediante ML**: Un modelo básico de Machine Learning que clasifica los sectores y requisitos de experiencia laboral en términos de su nivel de inclusividad para personas con discapacidad.
 
 ## 🛠️ Instalación
 
